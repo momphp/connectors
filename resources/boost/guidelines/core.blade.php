@@ -38,6 +38,7 @@ $this->callAfterResolving(ConnectorRegistry::class, function (ConnectorRegistry 
 
 - A type whose accounts can be used for email implements `Mom\Connectors\Mail\ProvidesMail` and returns a `MailClient`.
 - A `MailClient` returns messages as `InboundMail` (ids without angle brackets, addresses in lower case) and takes an `OutgoingMail` to send. `send()` must never retry: a second attempt could send the same email twice.
+- Put a message's HTML in `InboundMail::$bodyHtml` as it arrived, and only when the sender wrote HTML. Don't clean it in a connector: the app cleans it and shows it in a sandboxed frame.
 - Convert between `InboundMail` and the app's stored message in one place in the app, not inside a connector.
 
 ### Asking the registry

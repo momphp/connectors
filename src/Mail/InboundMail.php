@@ -23,6 +23,7 @@ final readonly class InboundMail
      * @param  ?string  $replyText  what the sender wrote, without the earlier messages quoted beneath it
      * @param  ?CarbonImmutable  $receivedAt  when the mail service received it
      * @param  bool  $hasAttachments  whether files came with it
+     * @param  ?string  $bodyHtml  the message as the sender laid it out, when it came with HTML. It is whatever the sender wrote, markup and all: an app must clean it and box it in before showing it
      */
     public function __construct(
         public ?string $externalId,
@@ -37,5 +38,6 @@ final readonly class InboundMail
         public ?string $replyText = null,
         public ?CarbonImmutable $receivedAt = null,
         public bool $hasAttachments = false,
+        public ?string $bodyHtml = null,
     ) {}
 }

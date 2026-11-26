@@ -223,7 +223,7 @@ and returns a `MailClient`, one mailbox at a mail service:
 | `attachments($id)`, `attachmentContents($id, $attachmentId)` | What is attached, then one file's bytes. |
 | `send(OutgoingMail $mail)` | Sends a reply once and returns a `SentMail`. Never retried. |
 
-`InboundMail` is the same whichever service it came through: ids without angle brackets, addresses in lower case, the whole text and, apart from it, what the sender wrote without the quoted history. `OutgoingMail` carries the recipients, the text, a subject and a marker every subject keeps (such as a ticket's `[#123]`), and optionally the `InboundMail` it answers. `toEmail()` builds the whole message, with reply headers and its own Message-ID, for services that are handed one to send.
+`InboundMail` is the same whichever service it came through: ids without angle brackets, addresses in lower case, the whole text and, apart from it, what the sender wrote without the quoted history. When the message came with HTML, `bodyHtml` holds it as the sender wrote it: clean it and show it boxed in (a sandboxed frame), never as part of your own page. `OutgoingMail` carries the recipients, the text, a subject and a marker every subject keeps (such as a ticket's `[#123]`), and optionally the `InboundMail` it answers. `toEmail()` builds the whole message, with reply headers and its own Message-ID, for services that are handed one to send.
 
 Register the capability with your registry:
 
